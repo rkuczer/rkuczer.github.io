@@ -9,11 +9,11 @@ tags: [cloud,resume]
 
 
 
-# Cloud Resume Challenge
-### Objective
+
+## Objective
 The Cloud Resume Challenge is a multiple-step resume project which helps build and demonstrate skills fundamental to pursuing a career as a Cloud Engineer. The project was first published by Forrest Brazeal. who works at Cloud Guru, a cloud education company.
 
-### Taking The Challenge
+## Taking The Challenge
 My process in expanding my skill set to the cloud and specifically **Azure** has been a long and rewarding experience. Learning new skills and concepts, gaining hands-on experience through interactive training and labs, as well as obtaining my Azure certification (first of many).
 
 However, when preparing to apply for positions building my portfolio with projects became a focus. Learning the  skills was only half the battle, but being able to convey the skills learned through a project that has some real world application is where I believe the majority of the value came in as a interviewee. b
@@ -28,7 +28,54 @@ HTML: Secondly my resume was currently in a word doc, instead of converting it t
 ### CSS
 CSS: I created a CSS file for my resume's style.
 
-![My CSS For My Resume](css.png)
+```CSS
+/* display background color black on navbar scroll */
+.navbarScroll.navbarDark {
+    background-color: black;
+}
+
+/* hero background image */
+.bgimage {
+    height:100vh;
+    background: url('heroImage.jpg');
+    background-size:cover;
+    position:relative;
+}
+/* text css above hero image*/
+.hero_title {
+    font-size: 4.5rem;
+}
+.hero_desc {
+    font-size: 2rem;
+}
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+/* spacing on all sections */
+/* #about, #services, #portfolio, #contact {
+    margin-top: 4rem;
+    padding-top: 4rem;
+} */
+#contact {
+    padding-bottom: 4rem;
+}
+/* about section image css */
+.imageAboutPage {
+    width: 100%;
+}
+
+/* services section css */
+.servicesText.card {
+    height: 280px;
+    cursor: pointer;
+  }
+```
 ### Static website: 
 I deployed my resume/portfolio site online as an <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website">Azure Storage Static Site,</a> this was pretty easy to do as the service just needs to be enabled with a index HTML file and an error document path.
 
@@ -46,7 +93,7 @@ I pointed a custom domain name from
 ### Javascript:
 I included javascipt code to include a visitor counter that displays how many people have accessed the site. Here is a [helpful tutorial](https://www.codecademy.com/learn/introduction-to-javascript).
 
-```Javascript
+```javascript
 script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>
 	$(document).ready(function() {
@@ -75,7 +122,9 @@ This project is a work in progress still the next steps are to...
 - [ ] Tests: Testing will have to be written for the python code, most likely unit tests.
 - [ ] IaaS: This will allow for configuring the resources without clicking around on the azure console. More command line could never hurt!
 - [ ] CI/CD (Back end): I will create a  github repo for my site, then utilize GitHub actions. So when I push an update to my python code the tests will be run and if they pass the ARM app will get packaged and deployed automatically.
-- [ ] CI/CD (Front end): A second GitHub repo will be created, however this will be for my website's code. When I push new code the storage account will be updated automatically (Never commit credentials plz)
+- [ ] CI/CD (Front end): A second GitHub repo will be created, however this will be for my website's code. When I push new code the storage account will be updated automatically 
+
+**(Never commit credentials plz)**
 
 
 
