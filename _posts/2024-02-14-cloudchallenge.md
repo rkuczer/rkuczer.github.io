@@ -4,7 +4,9 @@ date: 2024-02-14 12:00:00
 categories: [cloud, resume]
 tags: [cloud,resume]
 ---
+
 ![My Cloud Resume Website](cloudResumeChallengeHeader.png)
+
 
 
 # Cloud Resume Challenge
@@ -20,7 +22,21 @@ The official website can be reached [here](https://cloudresumechallenge.dev/docs
 
 #### Steps
 <ol>
-    <li>Certification: AZ-900 (Azure Fundamentals) is an introductory certification that orients something with Azure. It offers a great lay of the land of the possibilities with the Cloud Platform </li>
-    <li>HTML: </li>
+    <li>Certification: AZ-900 (Azure Fundamentals) is an introductory certification that orients someone with Azure. It offers a great lay of the land of the possibilities with the Cloud Platform. This is the first step I took. </li>
+    <li>HTML: Secondly my resume was currently in a word doc, instead of converting it to HTML manually I used a tool like <a href="https://cloudresumechallenge.dev/docs/the-challenge/azure/">here</a>. So it will be able to appear nicely in a webpage.</li>
+    <li>CSS: I created a CSS file for my resume's style
+    <div class="image-container">
+            <img src="css.jpg" alt="CSS Image" class="float-right" />
+        </div>
+    </li>
+    <li> </li>
+    <li> </li>
+    <li> </li>
+    <li> </li>
+    <li> </li>
+    <li> </li>
+    <li> </li>
+    <li> </li>
 </ol>
+
 
