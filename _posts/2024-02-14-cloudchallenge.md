@@ -20,23 +20,64 @@ However, when preparing to apply for positions building my portfolio with projec
 
 The official website can be reached [here](https://cloudresumechallenge.dev/docs/the-challenge/azure/).
 
-#### Steps
-<ol>
-    <li>Certification: AZ-900 (Azure Fundamentals) is an introductory certification that orients someone with Azure. It offers a great lay of the land of the possibilities with the Cloud Platform. This is the first step I took. </li>
-    <li>HTML: Secondly my resume was currently in a word doc, instead of converting it to HTML manually I used a tool like <a href="https://cloudresumechallenge.dev/docs/the-challenge/azure/">here</a>. So it will be able to appear nicely in a webpage.</li>
-    <li>CSS: I created a CSS file for my resume's style
-    <div class="image-container">
-            <img src="css.jpg" alt="CSS Image" class="float-right" />
-        </div>
-    </li>
-    <li> </li>
-    <li> </li>
-    <li> </li>
-    <li> </li>
-    <li> </li>
-    <li> </li>
-    <li> </li>
-    <li> </li>
-</ol>
+## Steps
+### Certification: 
+AZ-900 (Azure Fundamentals) is an introductory certification that orients someone with Azure. It offers a great lay of the land of the possibilities with the Cloud Platform. This is the first step I took. 
+### HTML:
+HTML: Secondly my resume was currently in a word doc, instead of converting it to HTML manually I used a tool like <a href="https://cloudresumechallenge.dev/docs/the-challenge/azure/">here</a>. So it will be able to appear nicely in a webpage.
+### CSS
+CSS: I created a CSS file for my resume's style.
+
+![My CSS For My Resume](css.png)
+### Static website: 
+I deployed my resume/portfolio site online as an <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website">Azure Storage Static Site,</a> this was pretty easy to do as the service just needs to be enabled with a index HTML file and an error document path.
+
+![image of static site](staticsite.jpg)
+
+The cloud resume challenge has extended capability beyond a site like this made with GitHub Pages. The rest of the steps will convey that.
+
+### HTTPS:
+I converted the URL for the storage site from HTTP to [HTTPS](https://www.cloudflare.com/learning/ssl/what-is-https/) for security. I needed to use Azure CDN for this and use CDN Managed as the Certificate management type and TLS version 1.2.
+
+### DNS:
+I pointed a custom domain name from 
+[godaddy.com](godaddy.com) to my configured Azure CDN endpoint. So instead of navigating to a URL like `mysite.z13.web.core.windows.net/` it is much simpler to access from other devices or present the project itself.
+
+### Javascript:
+I included javascipt code to include a visitor counter that displays how many people have accessed the site. Here is a [helpful tutorial](https://www.codecademy.com/learn/introduction-to-javascript).
+
+```Javascript
+script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		var count = localStorage.getItem('visitorCount');
+		if (!count) {
+		count = 0;
+		} else {
+		count = parseInt(count);
+		}
+		count++;
+		$('#visitorCount').text(count);
+		localStorage.setItem('visitorCount', count);
+  	});
+	</script>
+```
+
+### Database:
+The visitor count was now stored in  [CosmosDB](https://learn.microsoft.com/en-us/azure/cosmos-db/introduction) using Azure's [Table API](https://docs.microsoft.com/en-us/azure/cosmos-db/table/introduction). I used Serverless capacity mode so the resource cost was around .6 cents a month.
+
+If your website gets a lot of traffic (hopefully it will!) then it will cost more than 6 cents for sure.
+
+### Current Status:
+This project is a work in progress still the next steps are to...
+- [ ] API: Communicate with this instead of directly to the cosmos db. Azure functions with an http trigger is needed.
+- [ ] Python: This will be used instead of javascript in the azure function, it is better to practice more with the language and expand my use cases with the function.
+- [ ] Tests: Testing will have to be written for the python code, most likely unit tests.
+- [ ] IaaS: This will allow for configuring the resources without clicking around on the azure console. More command line could never hurt!
+- [ ] CI/CD (Back end): I will create a  github repo for my site, then utilize GitHub actions. So when I push an update to my python code the tests will be run and if they pass the ARM app will get packaged and deployed automatically.
+- [ ] CI/CD (Front end): A second GitHub repo will be created, however this will be for my website's code. When I push new code the storage account will be updated automatically (Never commit credentials plz)
+
+
+
 
 
