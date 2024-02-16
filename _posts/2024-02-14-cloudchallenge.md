@@ -32,7 +32,7 @@ CSS: I created a CSS file for my resume's style.
 ### Static website: 
 I deployed my resume/portfolio site online as an <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website">Azure Storage Static Site,</a> this was pretty easy to do as the service just needs to be enabled with a index HTML file and an error document path.
 
-![image of static site](staticsite.jpg)
+![image of static site](staticsite.png)
 
 The cloud resume challenge has extended capability beyond a site like this made with GitHub Pages. The rest of the steps will convey that.
 
@@ -41,7 +41,7 @@ I converted the URL for the storage site from HTTP to [HTTPS](https://www.cloudf
 
 ### DNS:
 I pointed a custom domain name from 
-[godaddy.com](godaddy.com) to my configured Azure CDN endpoint. So instead of navigating to a URL like `mysite.z13.web.core.windows.net/` it is much simpler to access from other devices or present the project itself.
+[godaddy.com](https://www.godaddy.com/) to my configured Azure CDN endpoint. So instead of navigating to a URL like `mysite.z13.web.core.windows.net/` it is much simpler to access from other devices or present the project itself.
 
 ### Javascript:
 I included javascipt code to include a visitor counter that displays how many people have accessed the site. Here is a [helpful tutorial](https://www.codecademy.com/learn/introduction-to-javascript).
