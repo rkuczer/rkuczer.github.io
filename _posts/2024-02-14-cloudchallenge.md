@@ -16,7 +16,7 @@ The Cloud Resume Challenge is a multiple-step resume project which helps build a
 ## Taking The Challenge
 My process in expanding my skill set to the cloud and specifically **Azure** has been a long and rewarding experience. Learning new skills and concepts, gaining hands-on experience through interactive training and labs, as well as obtaining my Azure certification (first of many).
 
-However, when preparing to apply for positions building my portfolio with projects became a focus. Learning the  skills was only half the battle, but being able to convey the skills learned through a project that has some real world application is where I believe the majority of the value came in as a interviewee. b
+However, when preparing to apply for positions building my portfolio with projects became a focus. Learning the  skills was only half the battle, but being able to convey the skills learned through a project that has some real world application is where I believe the majority of the value came in as a interviewee. 
 
 The official website can be reached [here](https://cloudresumechallenge.dev/docs/the-challenge/azure/).
 
@@ -26,9 +26,9 @@ AZ-900 (Azure Fundamentals) is an introductory certification that orients someon
 ### HTML:
 HTML: Secondly my resume was currently in a word doc, instead of converting it to HTML manually I used a tool like <a href="https://cloudresumechallenge.dev/docs/the-challenge/azure/">here</a>. So it will be able to appear nicely in a webpage.
 ### CSS
-CSS: I created a CSS file for my resume's style.
+I created a CSS file for my resume's style.
 
-```CSS
+```
 /* display background color black on navbar scroll */
 .navbarScroll.navbarDark {
     background-color: black;
@@ -123,10 +123,5 @@ This project is a work in progress still the next steps are to...
 - [ ] IaaS: This will allow for configuring the resources without clicking around on the azure console. More command line could never hurt!
 - [ ] CI/CD (Back end): I will create a  github repo for my site, then utilize GitHub actions. So when I push an update to my python code the tests will be run and if they pass the ARM app will get packaged and deployed automatically.
 - [ ] CI/CD (Front end): A second GitHub repo will be created, however this will be for my website's code. When I push new code the storage account will be updated automatically 
-
+ 
 **(Never commit credentials plz)**
-
-
-
-
-
