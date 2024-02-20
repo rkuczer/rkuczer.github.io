@@ -5,7 +5,7 @@ categories: [cloud, resume]
 tags: [cloud,resume]
 ---
 
-![My Cloud Resume Website](cloudResumeChallengeHeader.png)
+![My Cloud Resume Website](cloudResumeChallengeHeader.png){: .shadow }
 
 
 
