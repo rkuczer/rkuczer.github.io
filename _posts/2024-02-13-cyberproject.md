@@ -14,7 +14,6 @@ In this project, I simulate a small-scale honeynet that attracts real-world traf
   <li>Azure Virtual Network (VNet)</li>
   <li>Azure Network Security Group (NSG)</li>
   <li>Azure Virtual Machines</li>
-  <li>Use bundle to download the needed dependencies.</li>
   <li>Log Analytics Workspace with Kusto Query Language (KQL) Queries</li>
    <li>Microsoft Defender for Cloud</li>
     <li>Azure Blob Storage Accounts</li>
@@ -38,10 +37,15 @@ In this project, I simulate a small-scale honeynet that attracts real-world traf
 
   ![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/VPV2bM3.png)<br>
 
- <br />
- <br />
- 
- ## After Hardening Measures and Security Controls
+## Powershell and KQL
+To extract the data from the virtual machine of the log in attempts a powershell script was used. The image below shows a sample response from the script when a login attempt was executed.
+![powershell script](powershelllog.png)
+
+The following screenshot is of the KQL code in the Azure Log Analytis Workspace to present the data from the power shell script of a global map. This is usually an after though in the Cybersecurity, actually presenting the results and showing data why this business sector is critical.
+
+![KQL code](loganalytics.png)
+o
+## After Hardening Measures and Security Controls
 
 In the "AFTER" stage, based off the incidents created from the "Before" 24 hour capture, I implemented hardening measures and security controls to improve the environment's security from attackers.<br /> 
 These improvements included:
