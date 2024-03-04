@@ -1,5 +1,6 @@
 ---
 title: Cloud Resume Challenge
+featured_img: cloudResumeChallengeHeader.png
 date: 2024-02-14 12:00:00 
 categories: [cloud, resume]
 tags: [cloud,resume]
