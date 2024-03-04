@@ -39,11 +39,11 @@ In this project, I simulate a small-scale honeynet that attracts real-world traf
 
 ## Powershell and KQL
 To extract the data from the virtual machine of the log in attempts a powershell script was used. The image below shows a sample response from the script when a login attempt was executed.
-![powershell script](powershelllog.png)
+![powershell script](powershelllog.PNG)
 
 The following screenshot is of the KQL code in the Azure Log Analytis Workspace to present the data from the power shell script of a global map. This is usually an after though in the Cybersecurity, actually presenting the results and showing data why this business sector is critical.
 
-![KQL code](loganalytics.png)
+![KQL code](loganalytics.PNG)
 o
 ## After Hardening Measures and Security Controls
 
