@@ -16,7 +16,7 @@ However, when preparing to apply for positions building my portfolio with projec
 
 The official website can be reached [here](https://cloudresumechallenge.dev/docs/the-challenge/azure/).
 
-## Steps
+# Steps Taken
 ### Certification: 
 AZ-900 (Azure Fundamentals) is an introductory certification that orients someone with Azure. It offers a great lay of the land of the possibilities with the Cloud Platform. This is the first step I took. 
 ### HTML:
