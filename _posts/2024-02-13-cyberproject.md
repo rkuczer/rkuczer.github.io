@@ -1,5 +1,6 @@
 ---
 title: My First Security Project
+image: cyber-security.png
 date: 2024-02-13 12:00:00 
 categories: [azure, honeypot]
 tags: [cloud,cybersecurity]
