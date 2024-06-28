@@ -17,12 +17,12 @@ However, when preparing to apply for positions building my portfolio with projec
 The official website can be reached [here](https://cloudresumechallenge.dev/docs/the-challenge/azure/).
 
 # Steps Taken
-### Certification: 
+### Certification
 AZ-900 (Azure Fundamentals) is an introductory certification that orients someone with Azure. It offers a great lay of the land of the possibilities with the Cloud Platform. This is the first step I took. 
-### HTML:
-HTML: Secondly my resume was currently in a word doc, instead of converting it to HTML manually I used a tool like <a href="https://cloudresumechallenge.dev/docs/the-challenge/azure/">here</a>. So it will be able to appear nicely in a webpage.
+### HTML
+Secondly if you are going to use a resume for the static website you need to convert it out of a word document and into  HTML. Instead of doing it manually use a tool like <a href="https://htmledit.squarefree.com/">this</a>, so it will appear nicely in a webpage. However, in my case I will not be using my resume but a custom site I made.
 ### CSS
-I created a CSS file for my resume's style.
+Next, I created a CSS file for my website's style.
 
 ```
 /* display background color black on navbar scroll */
@@ -77,14 +77,16 @@ I deployed my resume/portfolio site online as an <a href="https://learn.microsof
 
 ![image of static site](staticsite.png)
 
-The cloud resume challenge has extended capability beyond a site like this made with GitHub Pages. The rest of the steps will convey that.
+The cloud resume challenge itself has extended capability beyond a site like this made with GitHub Pages, the rest of the steps will convey that hopefully.
 
 ### HTTPS:
-I converted the URL for the storage site from HTTP to [HTTPS](https://www.cloudflare.com/learning/ssl/what-is-https/) for security. I needed to use Azure CDN for this and use CDN Managed as the Certificate management type and TLS version 1.2.
+I converted the URL for the storage site from HTTP to [HTTPS](https://www.cloudflare.com/learning/ssl/what-is-https/) for security. I needed to use Azure CDN for this and use **CDN Managed** as the Certificate management type and TLS version 1.2.
 
 ### DNS:
 I pointed a custom domain name from 
 [godaddy.com](https://www.godaddy.com/) to my configured Azure CDN endpoint. So instead of navigating to a URL like `mysite.z13.web.core.windows.net/` it is much simpler to access from other devices or present the project itself.
+
+For this, a CNAME is created which is a DNS record that maps a source domain name to a destination domain name. Azure Content Delivery Network routes traffic addressed to the source custom domain to the destination content delivery network endpoint hostname after it verifies the CNAME record. Then the custom domain is added to the CDN endpoint. Then I verified the domain since Azure Content Delivery Network caches the content in a public container.
 
 ### Javascript:
 I included javascipt code to include a visitor counter that displays how many people have accessed the site. Here is a [helpful tutorial](https://www.codecademy.com/learn/introduction-to-javascript).
