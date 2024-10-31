@@ -1,6 +1,6 @@
 ---
-title: Cloud Resume Challenge [Updates]
-image: cloudResumeChallengeHeader.png
+title: Finishing the Cloud Resume Challenge
+image: cloudResumeHeader.webp
 date: 2024-10-04 12:00:00 
 categories: [cloud, resume]
 tags: [cloud,resume]
