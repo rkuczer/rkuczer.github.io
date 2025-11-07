@@ -23,8 +23,6 @@ Thankfully I had a spare Dell Optiplex 7010 tower lying around, this was perfect
 ## Step 1: Changing the OS
 I wanted the max amount of resources available for the Minecraft server since I was on limited hardware so I chose **Ubuntu**.  I chose my favorite USB stick then used Rufus to format it and put the latest Ubuntu ISO on it. I then put it into the Optiplex while it was off, turned it on, spammed **F12** to get it into the BIOS and finally set the boot order to be the USB first. 
 
-![BIOS](bios.png)
-
 I then installed Ubuntu and followed the prompts without changing anything. 
 
 ## Step 2: Linux Hygiene
