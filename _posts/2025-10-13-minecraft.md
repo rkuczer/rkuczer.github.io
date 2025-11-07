@@ -20,7 +20,14 @@ Thankfully I had a spare Dell Optiplex 7010 tower lying around, this was perfect
 * Intel Core i7-3770S
 * 8 Gb RAM (DDR3)
 
-## Step 1: OS
-I wanted the max amount of resources available for the Minecraft server since I was on limited hardware so I chose **Ubuntu**.  I chose my favorite USB stick then used Rufus to format it and put the latest Ubuntu ISO on it. I then put it into the Optiplex while it was off, turned it on, spammed **F12** to get it into the BIOS and finally set the boot order to be the USB first.
+## Step 1: Changing the OS
+I wanted the max amount of resources available for the Minecraft server since I was on limited hardware so I chose **Ubuntu**.  I chose my favorite USB stick then used Rufus to format it and put the latest Ubuntu ISO on it. I then put it into the Optiplex while it was off, turned it on, spammed **F12** to get it into the BIOS and finally set the boot order to be the USB first. 
 
 ![BIOS](bios.png)
+
+I then installed Ubuntu and followed the prompts without changing anything. 
+
+## Step 2: Linux Hygiene
+The next step was to have Linux properly setup prior to adding everything for minecraft, this included.
+1. `sudo apt update && sudo apt upgrade`: Update & Upgrades
+2. `sudo apt install curl/wget`: Install necessary packages 
