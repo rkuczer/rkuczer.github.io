@@ -30,7 +30,7 @@ The next step was to have Linux properly setup prior to adding everything for mi
 1. `apt update && apt upgrade`: Update & Upgrades
 2. `apt install curl/wget`: Install necessary packages 
 3. `apt install screen`: Used to have the server run properly when not logged onto the server.
-4. `/opt, mkdir minecraft, cd minecraft`: Navigate to the `/opt` directory then create a called minecraft then navigate to it. Once in the minecraft directory, download the forge installer for 1.12.2 and then copy it to this dir.
+4. `/opt, mkdir minecraft, cd minecraft`: Navigate to the `/opt` directory then create a called minecraft then navigate to it. Once in the minecraft directory, download the forge installer for 1.12.2 and then copy it to this dir. This versionn of forge is included as it is not extremely hold but has the most compatability with everyone's favorite mods.
 5. `java -jar forge-1.12.2-14.23.5.2860-installer.jar --installServer`: Run the forge installer, creates a second file called **forge-1.12.2-14.23.5.2860.jar**.
 6. `java -Xms1024M -Xmx2000M -jar /opt/minecraft/forge-1.12.2-14.23.5.2860.jar nogui`: Start the minecraft server with a minimum 1gb of memory with a maximum of 2gb allocated, also run the server in nogui for faster performace. Knowing how xms, xms, jvm works in conjunction with [managing JVM's heaps](https://sematext.com/glossary/jvm-heap/) is useful here.
 7. Accept the eula by navigating to the `eula.txt` file with `nano` then set `eula=true`.
@@ -41,4 +41,12 @@ The next step was to have Linux properly setup prior to adding everything for mi
     cd /opt/minecraft/ && java -Xms1024M -Xmx2000M -jar /opt/minecraft/forge-1.12.2-14.23.5.2860.jar nogui
 ```
 
-10. Before starting the server use the `screen` command to start a screen session. Then start the server with the script, after that is complete use the shortcut `ctrl + a, d` to detach from the session allowing you to do other configuration while the server is running.
+10. Before starting the server use the `screen` command followed by `ctrl + a, c`to start a screen session. Then start the server with the script, after that is complete use the shortcut `ctrl + a, d` to detach from the session allowing you to do other configuration while the server is running. To reattach to the screen session whenever you need use the `screen -r` command, learn more on the screen command [here](https://www.geeksforgeeks.org/linux-unix/screen-command-in-linux-with-examples/).
+
+At this point users on your local network can connect to the server and play on it as long as they are also running Minecraft + Forge 1.12.2. However there are no mods currently and we need to make the server available over the internet (securely) still.
+
+## Step 3. Mods
+Download your mods from one of the reputable mod library sites that are supported with Forge. I like the following as a good base:
+* Industrial Craft
+* Build Craft
+* 
