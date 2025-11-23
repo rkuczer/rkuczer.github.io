@@ -26,6 +26,12 @@ I wanted the max amount of resources available for the Minecraft server since I 
 I then installed Ubuntu and followed the prompts without changing anything. 
 
 ## Step 2: Linux Hygiene
-The next step was to have Linux properly setup prior to adding everything for minecraft, this included.
-1. `sudo apt update && sudo apt upgrade`: Update & Upgrades
-2. `sudo apt install curl/wget`: Install necessary packages 
+The next step was to have Linux properly setup prior to adding everything for minecraft, this included using the following commands while directly connected to the Linux box. *The commands assume you have sudo access*/
+1. `apt update && apt upgrade`: Update & Upgrades
+2. `apt install curl/wget`: Install necessary packages 
+3. `apt install screen`: Used to have the server run properly when not logged onto the server.
+4. `/opt, mkdir minecraft, cd minecraft`: Navigate to the `/opt` directory then create a called minecraft then navigate to it. Once in the minecraft directory, download the forge installer for 1.12.2 and then copy it to this dir.
+5. `java -jar forge-1.12.2-14.23.5.2860-installer.jar --installServer`: Run the forge installer, creates a second file called **forge-1.12.2-14.23.5.2860.jar**.
+6. `java -Xms1024M -Xmx2000M -jar /opt/minecraft/forge-1.12.2-14.23.5.2860.jar nogui`: Start the minecraft server with a minimum 1gb of memory with a maximum of 2gb allocated, also run the server in nogui for faster performace. Knowing how xms, xms, jvm works in conjunction with managing JVM's heaps is useful here.
+7. Accept the eula by navigating to the `eula.txt` file with `nano` then set `eula=true`.
+
