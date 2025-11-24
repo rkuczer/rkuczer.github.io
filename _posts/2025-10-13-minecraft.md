@@ -46,7 +46,35 @@ The next step was to have Linux properly setup prior to adding everything for mi
 At this point users on your local network can connect to the server and play on it as long as they are also running Minecraft + Forge 1.12.2. However there are no mods currently and we need to make the server available over the internet (securely) still.
 
 ## Step 3. Mods
-Download your mods from one of the reputable mod library sites that are supported with Forge. I like the following as a good base:
-* Industrial Craft
-* Build Craft
-* 
+Download your mods from one of the reputable mod library sites that are supported with Forge, I used **CurseForge**.  
+
+### Step 4. Security
+Now that the server is running with everything installed on the Minecraft side, now is time to harden the server. Each section below will go over the specific security addition.
+
+### SSH Security
+
+The following section applies changes to SSH configuration, choosing a **non-standard port** and only allowing **key based authentication**.
+
+I chose a non-standard ssh port other than the default of `22` to avoid low hanging fruit style attacks were the port will scanned either manually or automatically to identify potential system vulnerabilites.
+
+Key based authentication was used to provide stronger authentication and remove possible worries of using a password and having it be leaked.
+
+To do this navigate to the SSH server config file at `/etc/ssh/sshd_config`, then make hte following changes to the file.
+
+```conf
+# Change the port (you can keep 22 active too if you want, or remove it)
+Port 2222
+
+# Disable password authentication (forces key-only)
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+PubkeyAuthentication yes
+
+# Optional but recommended
+PermitRootLogin prohibit-password   # or "no" if you never want root login
+AllowUsers yourusername             # restrict to specific users (optional)
+```
+After this restart the SSH service with `sudo systemctl restart`.
+
+
+#
