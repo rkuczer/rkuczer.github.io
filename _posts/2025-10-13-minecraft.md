@@ -1,5 +1,5 @@
 ---
-title: Configuring a Bare-Metal Linux Server to Play with Friends
+title: Configuring a Bare-Metal Linux Server to Play Minecraft with Friends
 image: dellopti.jpg
 date: 2025-10-13 12:00:00 
 categories: [linux, sysadmin]
