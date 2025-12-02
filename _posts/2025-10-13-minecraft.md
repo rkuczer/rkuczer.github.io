@@ -6,7 +6,7 @@ categories: [linux, sysadmin]
 tags: [linux,sysadmin]
 ---
 
-# Objective
+# Objective 
 
 After diving into different subjects in the realm of computers, networking, system administration, and security, you get exposed to a lot all at once. To retain the information effectively without staying to study all day, it seems the best way to learn is to split your time between studying and building. Furthermore, it is even better if you can build something you yourself can use but if other people in your life can use it too, it's even better. 
 
