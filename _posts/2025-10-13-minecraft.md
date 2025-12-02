@@ -10,32 +10,40 @@ tags: [linux,sysadmin]
 
 After diving into different subjects in the realm of computers, networking, system administration and security you get exposed to a lot all at once. To be able to retain the information effectively without statically studying all day it seems the best way to learn is to split your time studying & building. Furthermore, it is even better if you can build something you yourself can use but if other people in your life can it's even better. 
 
-Hence my new addition to the portfolio of projects is configuring a Modded Minecraft server for me and my friends to play on. This covers everything from adjusting the BIOS of a Dell tower, installing Ubuntu, hardening Linux OS and the network to only allow clients what they need. To sum it up its IT, 'sys administration', and security all in one!
+Hence my new addition to the portfolio of projects is configuring a modded Minecraft server for me and my friends to play on. This covers everything from adjusting the BIOS of a Dell tower, installing Ubuntu, hardening the Linux OS and my network itself to only allow users with what they need. To sum it up its IT, 'sys administration', and security all in one!
+
+*This article assumes you have sudo access on the server and are knowledgeable with Minecraft & Linux*
 
 ## Hardware
-Thankfully I had a spare Dell Optiplex 7010 tower lying around, this was perfect as it was not too beefy but also not a peashooter. For reference it was new when Windows 7 came out.
+Thankfully I had a spare Dell OptiPlex 7010 tower lying around, this was perfect as it was not too beefy but also not a peashooter. For reference it was new when Windows 7 came out. I wanted to self-host this server as it provided:
+* Max control
+* Ability to work with the CLI
+* Cheaper than a VPS
+* Learning the process start to finish of hosting
 
-#### Specifications
-* 320 GB STA
+### Server Specifications
+* 320 GB SATA
 * Intel Core i7-3770S
 * 8 Gb RAM (DDR3)
 
 ## Step 1: Changing the OS
-I wanted the max amount of resources available for the Minecraft server since I was on limited hardware so I chose **Ubuntu**.  I chose my favorite USB stick then used Rufus to format it and put the latest Ubuntu ISO on it. I then put it into the Optiplex while it was off, turned it on, spammed **F12** to get it into the BIOS and finally set the boot order to be the USB first. 
+I wanted the max amount of resources available for the Minecraft server since I was on limited hardware so I chose **Ubuntu**. This was from the fact that Windows inherently has more 'bloat' that can eat away at the total amount of compute power for other processes that matter more. 
 
-I then installed Ubuntu and followed the prompts without changing anything. 
+So, I chose my favorite USB stick then used [Rufus](https://rufus.ie/en/) to format it and put the latest Ubuntu ISO file on it. I then put it into the OptiPlex while it was off, turned it on, spammed **F12** to get it into the BIOS and set the boot order to be the USB first. 
+
+I then installed Ubuntu and followed the prompts without changing anything out of the ordinary.
 
 ## Step 2: Linux Hygiene
 The next step was to have Linux properly setup prior to adding everything for minecraft, this included using the following commands while directly connected to the Linux box. *The commands assume you have sudo access, security setup will be in the next section*. 
-1. `apt update && apt upgrade`: Update & Upgrades
+1. `apt update && apt upgrade`: Update & upgrades
 2. `apt install curl/wget`: Install necessary packages 
 3. `apt install screen`: Used to have the server run properly when not logged onto the server.
-4. `/opt, mkdir minecraft, cd minecraft`: Navigate to the `/opt` directory then create a called minecraft then navigate to it. Once in the minecraft directory, download the forge installer for 1.12.2 and then copy it to this dir. This versionn of forge is included as it is not extremely hold but has the most compatability with everyone's favorite mods.
-5. `java -jar forge-1.12.2-14.23.5.2860-installer.jar --installServer`: Run the forge installer, creates a second file called **forge-1.12.2-14.23.5.2860.jar**.
+4. `/opt, mkdir minecraft, cd minecraft`: Navigate to the `/opt` directory then create a called minecraft then navigate to it. Once in the minecraft directory, download the Forge installer for 1.12.2 and then copy it to this dir. This version of Forge is included as it is not extremely hold but has the most compatability with everyone's favorite mods. *Note: If using SSH for initial configuration use something like WinSCP or SCP to transfer the files to your Linux server*.
+5. `java -jar forge-1.12.2-14.23.5.2860-installer.jar --installServer`: Run the Forge installer, creates a second file called **forge-1.12.2-14.23.5.2860.jar**.
 6. `java -Xms1024M -Xmx2000M -jar /opt/minecraft/forge-1.12.2-14.23.5.2860.jar nogui`: Start the minecraft server with a minimum 1gb of memory with a maximum of 2gb allocated, also run the server in nogui for faster performace. Knowing how xms, xms, jvm works in conjunction with [managing JVM's heaps](https://sematext.com/glossary/jvm-heap/) is useful here.
 7. Accept the eula by navigating to the `eula.txt` file with `nano` then set `eula=true`.
 8. *Optional:* `nano` to the `server.properties` file then set the `level-seed` to a preset seed if that is desired.
-9. Create a script to start the minecraft server if that is desired, I did it. It should be a `.sh` file with the following contents. After creating it make sure to use `chmod` to make it executable.
+9. Create a script to start the minecraft server if that is desired to make launching easier, I did it. It should be a `.sh` file with the following contents. After creating it make sure to use `chmod` to make it executable, this was the initial script:
 ```bash
     #!/bin/bash
     cd /opt/minecraft/ && java -Xms1024M -Xmx2000M -jar /opt/minecraft/forge-1.12.2-14.23.5.2860.jar nogui
@@ -46,35 +54,79 @@ The next step was to have Linux properly setup prior to adding everything for mi
 At this point users on your local network can connect to the server and play on it as long as they are also running Minecraft + Forge 1.12.2. However there are no mods currently and we need to make the server available over the internet (securely) still.
 
 ## Step 3. Mods
-Download your mods from one of the reputable mod library sites that are supported with Forge, I used **CurseForge**.  
+Download your mods from one of the reputable mod library sites that are supported with Forge, I used **CurseForge**. Users on the client side will put their mods in this folder:`C:\Users\YOURUSERHERE\AppData\Roaming\.minecraft\mods`
 
-### Step 4. Security
+## Step 4. Security
 Now that the server is running with everything installed on the Minecraft side, now is time to harden the server. Each section below will go over the specific security addition.
 
 ### SSH Security
 
 The following section applies changes to SSH configuration, choosing a **non-standard port** and only allowing **key based authentication**.
 
-I chose a non-standard ssh port other than the default of `22` to avoid low hanging fruit style attacks were the port will scanned either manually or automatically to identify potential system vulnerabilites.
+* I chose a non-standard ssh port other than the default of `22` to avoid low hanging fruit style attacks were the port will scanned either manually or automatically to identify potential system vulnerabilites.
 
-Key based authentication was used to provide stronger authentication and remove possible worries of using a password and having it be leaked.
+* Key based authentication was used to provide stronger authentication and remove possible worries of using a password and having it be leaked.
 
-To do this navigate to the SSH server config file at `/etc/ssh/sshd_config`, then make hte following changes to the file.
+To do this navigate to the SSH server config file at `/etc/ssh/sshd_config`, then make the following changes to the file.
 
 ```conf
-# Change the port (you can keep 22 active too if you want, or remove it)
 Port 2222
-
-# Disable password authentication (forces key-only)
 PasswordAuthentication no
-ChallengeResponseAuthentication no
 PubkeyAuthentication yes
-
-# Optional but recommended
-PermitRootLogin prohibit-password   # or "no" if you never want root login
-AllowUsers yourusername             # restrict to specific users (optional)
+PermitRootLogin no
 ```
-After this restart the SSH service with `sudo systemctl restart`.
+After this restart the SSH service with `sudo systemctl restart` and generate a ssh key pair with the command: `ssh-keygen -t rsa -b 4096 -C "your-email@example.com"` I then transferred the key to my other local machine. Test connection status with the command `ssh -p 2222 youruser@your-server-ip`.
+
+### Network Security
+* I first setup port forwarding on my router to allow users to access my internal server from my public IP on port `25565`. Reference your routers documentation to complete this.
+
+* I then blocked all other non-necessary ports on the server itself with the command:
+`sudo ufw allow 25565/tcp`.
+
+* To only allow SSH locally only ensure `ufw` is enabled then use the command: `sudo ufw allow from <local_subnet> to any port 2222 proto tcp`. In my case the local subnet was `192.168....`
 
 
-#
+### Whitelisting
+Since my server was visible on port `25565` I then use whitelisting to only allow certain player's to be able to join. To do this first set `white-list=true` in the `server.properties` file. Then restart the server, then use the command `whitelist add USERNAME` for each player you want to be able to join.
+
+### Backups
+I regularly backed up the server files to a safe location (another computer) to avoid getting bashed by my friends for losing all their progress. This backup can be used to restore the entire world itself.
+```bash
+login to your server
+cd /opt
+tar -zcvf minecraft_backup.tar.gz minecraft
+```
+#### Automatic
+To make the backups automatic on a weekly basis create the following script:
+```bash
+# What to backup.  Name of minecraft folder in /opt
+backup_files="minecraft"
+
+# Specify which directory to backup to.
+# Warning: minecraft worlds can get fairly large so choose your backup destination accordingly.
+dest="/home/username/minecraftbackups"
+
+# Create backup archive filename.
+day=$(date +%A)
+archive_file="$day-$backup_files-.tar.gz"
+
+# Backup the files using tar.
+cd /opt && tar zcvf $dest/$archive_file $backup_files
+```
+Make sure to make the file executable with `chmod` and test the script before creating a scheduled task. Then create a task with the cron scheduler, use this line at the end of a root crontab ` 02 2 * * * /opt/scripts/mcbackup.sh &> /dev/null`
+## Server Improvements
+* I recreated my script to have a catch for when it inevitably crashed at some point, whether it was from a player over using resources or generic crashes.
+
+``` bash
+while true; do 
+	echo "Starting Minecraft server..." 
+	sudo java -Xms2G -Xmx6G -jar minecraft_server.jar nogui 
+	echo "Minecraft server crashed or stopped. Restarting in 10 seconds..." 
+	sleep 10 
+done
+```
+
+
+
+## Summary of Experience
+Constructing this Minecraft server turned a simple evening of gaming with friends into a rewarding dive into system administration. Though built on humble hardware, the foundational skills I gained from Linux fundamentals and security measures to efficient server management readily scale to enterprise-level challenges. It's a reminder that the most enduring knowledge emerges from hands on projects that combine enjoyment with expertise.
