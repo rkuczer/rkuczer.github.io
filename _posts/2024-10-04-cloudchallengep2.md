@@ -162,6 +162,46 @@ Once the function app was deployed I added a variable in the function for my `Az
 
 Now, the website is up and running with my custom domain and the count updates correctly.
 
+### Infrastructure as Code
+Instead of configuring Azure resources manually through the portal, I defined them using an Azure Resource Manager (ARM) template — a practice known as Infrastructure as Code (IaC).
+
+I exported my existing Resource Group from the Azure Portal, which generated a `template.json` and `parameters.json` representing my Azure Function and CosmosDB configuration. These files are stored in the `infra/` folder of my repository.
+
+To automate deployment, I created a GitHub Actions workflow (`infra.yml`) that triggers whenever changes are pushed to the `infra/` folder. It uses the `azure/arm-deploy` action to deploy the template directly to Azure:
+
+```yaml
+name: deploy_infrastructure
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'infra/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Deploy ARM Template
+      uses: azure/arm-deploy@v1
+      with:
+        resourceGroupName: ResumeSite
+        template: ./infra/template.json
+        parameters: ./infra/parameters.json
+```
+
+This ensures my infrastructure is version-controlled, repeatable, and not dependent on manual portal configuration.
+
+#### Use Cases for ARM
+- **Repeatable Deployments** — Spin up identical dev, staging, and production environments from a single template
+- **Disaster Recovery** — Redeploy all infrastructure in minutes if something goes wrong
+- **Team Collaboration** — Infrastructure lives in source control so changes are tracked like code
+- **Compliance & Auditing** — Every infrastructure change is logged, who made it and when
+- **Cost Control** — Tear down environments when not in use, redeploy later to avoid idle costs
+
 ### Continuous Integration and Development
 ![alt text](image1.png)
 
